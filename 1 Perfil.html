@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEITO✅ — Perfil do Prestador</title>
+<meta name="description" content="Veja o perfil completo do prestador, avaliações e solicite um orçamento.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:  #1A1A2E;
+    --navyM: #232341;
+    --navyL: #2D2D50;
+    --gold:  #C9A84C;
+    --goldL: #E8C76A;
+    --green: #1A8C4E;
+    --red:   #C9370A;
+    --grey:  #9999BB;
+    --offW:  #F0EEE8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--navy); color: var(--offW); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+
+  nav {
+    background: rgba(26,26,46,0.97);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 2px; color: #fff; text-decoration: none; }
+  .nav-brand span { color: var(--gold); }
+  .nav-back { font-size: 0.85rem; color: var(--grey); text-decoration: none; }
+  .nav-back:hover { color: var(--gold); }
+
+  /* Hero do perfil */
+  .perfil-hero {
+    background: linear-gradient(180deg, var(--navyL) 0%, var(--navyM) 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    padding: 36px 24px 28px;
+  }
+  .perfil-hero-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; gap: 24px; align-items: flex-start;
+  }
+  .perfil-avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem; flex-shrink: 0; position: relative;
+    overflow: hidden;
+  }
+  .perfil-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .disponivel-dot {
+    position: absolute; bottom: 4px; right: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #4ACA7F; border: 2px solid var(--navyL);
+    box-shadow: 0 0 8px rgba(74,202,127,0.6);
+  }
+
+  .perfil-info { flex: 1; }
+  .perfil-nome { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 2.4rem); color: #fff; line-height: 1; margin-bottom: 4px; }
+  .perfil-esp { font-size: 1rem; color: var(--gold); margin-bottom: 6px; }
+  .perfil-local { font-size: 0.85rem; color: var(--grey); margin-bottom: 12px; }
+
+  .perfil-selos { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .selo { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.3px; }
+  .selo-fundador { background: rgba(201,55,10,0.2); border: 1px solid var(--red); color: #FF8060; }
+  .selo-bem      { background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); }
+  .selo-perfeito { background: rgba(26,140,78,0.15); border: 1px solid var(--green); color: #4ACA7F; }
+  .selo-dito     { background: rgba(100,100,200,0.15); border: 1px solid #6666CC; color: #9999EE; }
+
+  .perfil-nota { display: flex; align-items: center; gap: 8px; }
+  .nota-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+  .nota-num { font-weight: 700; font-size: 1rem; color: #fff; }
+  .nota-count { font-size: 0.82rem; color: var(--grey); }
+
+  /* Stats bar */
+  .stats-bar {
+    max-width: 760px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .stat-item {
+    background: var(--navyM);
+    padding: 16px 12px; text-align: center;
+  }
+  .stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--gold); line-height: 1; }
+  .stat-l { font-size: 0.72rem; color: var(--grey); margin-top: 2px; }
+
+  /* CTAs fixas mobile */
+  .cta-fixo {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+    background: var(--navyM);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 12px 16px;
+    display: flex; gap: 10px;
+  }
+  .btn-orcamento {
+    flex: 1; background: var(--gold); color: var(--navy);
+    font-weight: 800; font-size: 0.95rem;
+    padding: 14px; border: none; border-radius: 6px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s; text-align: center;
+    text-decoration: none; display: block;
+  }
+  .btn-orcamento:hover { background: var(--goldL); }
+  .btn-wpp {
+    background: #25D366; color: #fff;
+    font-weight: 700; font-size: 0.95rem;
+    padding: 14px 18px; border: none; border-radius: 6px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-wpp:hover { background: #20c05a; }
+
+  /* Conteúdo */
+  .main {
+    max-width: 760px; margin: 0 auto;
+    padding: 28px 20px 100px;
+  }
+
+  .section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 4px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  /* Sobre */
+  .sobre-text { font-size: 0.92rem; color: var(--grey); line-height: 1.8; }
+
+  /* Info grid */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .info-item {
+    background: var(--navyL);
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .info-item-label { font-size: 0.72rem; color: var(--grey); margin-bottom: 4px; }
+  .info-item-valor { font-size: 0.92rem; color: var(--offW); font-weight: 500; }
+
+  /* Portfólio */
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .portfolio-item {
+    aspect-ratio: 1;
+    background: var(--navyL);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; color: var(--grey);
+    border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden;
+  }
+  .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+  .portfolio-empty {
+    font-size: 0.78rem; color: var(--grey);
+    text-align: center; padding: 20px;
+    background: var(--navyL); border-radius: 8px;
+    border: 1px dashed rgba(255,255,255,0.1);
+  }
+
+  /* Avaliações */
+  .aval-list { display: flex; flex-direction: column; gap: 12px; }
+  .aval-item {
+    background: var(--navyL);
+    border-radius: 8px; padding: 16px;
+    border-left: 3px solid var(--gold);
+  }
+  .aval-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .aval-nome { font-weight: 600; font-size: 0.88rem; color: #fff; }
+  .aval-nota { color: var(--gold); font-size: 0.9rem; }
+  .aval-data { font-size: 0.72rem; color: var(--grey); margin-bottom: 6px; }
+  .aval-texto { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
+
+  .aval-empty {
+    text-align: center; padding: 28px;
+    background: var(--navyL); border-radius: 8px;
+    font-size: 0.88rem; color: var(--grey);
+  }
+
+  /* Garantia FEITO */
+  .garantia-box {
+    background: rgba(26,140,78,0.08);
+    border: 1px solid rgba(26,140,78,0.25);
+    border-radius: 8px; padding: 18px 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .garantia-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .garantia-text h4 { font-weight: 700; font-size: 0.9rem; color: #4ACA7F; margin-bottom: 4px; }
+  .garantia-text p { font-size: 0.82rem; color: var(--grey); line-height: 1.6; }
+
+  @media (max-width: 500px) {
+    .perfil-hero-inner { flex-direction: column; align-items: center; text-align: center; }
+    .perfil-selos { justify-content: center; }
+    .perfil-nota { justify-content: center; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .info-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">FEITO<span>✅</span></a>
+  <a class="nav-back" href="feito-busca.html">← Buscar prestadores</a>
+</nav>
+
+<!-- Hero -->
+<div class="perfil-hero">
+  <div class="perfil-hero-inner">
+    <div class="perfil-avatar" id="avatar">
+      🔧
+      <div class="disponivel-dot" id="disponivel-dot"></div>
+    </div>
+    <div class="perfil-info">
+      <h1 class="perfil-nome" id="p-nome">—</h1>
+      <p class="perfil-esp" id="p-esp">—</p>
+      <p class="perfil-local" id="p-local">—</p>
+      <div class="perfil-selos" id="p-selos"></div>
+      <div class="perfil-nota">
+        <span class="nota-stars" id="p-stars">—</span>
+        <span class="nota-num" id="p-nota">—</span>
+        <span class="nota-count" id="p-aval-count">—</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-n" id="s-nota">—</div>
+    <div class="stat-l">nota média</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n" id="s-aval">—</div>
+    <div class="stat-l">avaliações</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n" id="s-serv">—</div>
+    <div class="stat-l">serviços</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-n" id="s-anos">—</div>
+    <div class="stat-l">anos exp.</div>
+  </div>
+</div>
+
+<!-- Conteúdo -->
+<div class="main">
+
+  <!-- Garantia -->
+  <div class="section">
+    <div class="garantia-box">
+      <div class="garantia-icon">🛡️</div>
+      <div class="garantia-text">
+        <h4>Prestador verificado pela FEITO✅</h4>
+        <p>Este profissional possui perfil ativo na plataforma. Lead inválido não desconta — se não respondido em 72h, o contato não é cobrado do prestador.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sobre -->
+  <div class="section">
+    <p class="section-title">Sobre o profissional</p>
+    <p class="sobre-text" id="p-descricao">—</p>
+  </div>
+
+  <!-- Informações -->
+  <div class="section">
+    <p class="section-title">Informações</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-item-label">Especialidade</div>
+        <div class="info-item-valor" id="i-esp">—</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">Localização</div>
+        <div class="info-item-valor" id="i-local">—</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">Experiência</div>
+        <div class="info-item-valor" id="i-anos">—</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">Valor/hora</div>
+        <div class="info-item-valor" id="i-valor">—</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">Disponibilidade</div>
+        <div class="info-item-valor" id="i-disp">—</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">Plano</div>
+        <div class="info-item-valor" id="i-plano">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfólio -->
+  <div class="section">
+    <p class="section-title">Portfólio de trabalhos</p>
+    <div id="portfolio-area">
+      <div class="portfolio-empty">
+        📸 Fotos de trabalhos serão exibidas aqui após o prestador fazer upload no seu perfil.
+      </div>
+    </div>
+  </div>
+
+  <!-- Avaliações -->
+  <div class="section">
+    <p class="section-title">Avaliações de clientes</p>
+    <div id="avaliacoes-area"></div>
+  </div>
+
+</div>
+
+<!-- CTAs fixas -->
+<div class="cta-fixo">
+  <a class="btn-orcamento" id="btn-orcamento" href="#">✅ Solicitar orçamento</a>
+  <a class="btn-wpp" id="btn-wpp" href="#" target="_blank">📱 WhatsApp</a>
+</div>
+
+<script>
+// ── Dados de exemplo — mesmos da busca ───────────────
+const PRESTADORES = [
+  {
+    id: 1,
+    nome: "Carlos Augusto",
+    especialidade: "Marido de Aluguel",
+    cidade: "Ibirité", estado: "MG",
+    nota: 4.9, avaliacoes: 47, servicos: 89, anos: 10,
+    descricao: "Mais de 10 anos de experiência em serviços residenciais. Instalações elétricas, hidráulica, montagem de móveis, pintura e pequenos reparos. Atendo Ibirité, Contagem e BH com pontualidade e qualidade garantida. Orçamento sem compromisso.",
+    plano: "profissional",
+    selos: ["fundador","bem","perfeito","dito"],
+    disponivel: true,
+    avatar: "🔧",
+    telefone: "31992084142",
+    valor_hora: 80,
+    reviews: [
+      { nome: "Ana Paula", nota: 5, data: "Fevereiro 2026", texto: "Excelente profissional! Resolveu o problema elétrico da minha casa rapidamente e com muito cuidado. Super recomendo." },
+      { nome: "Roberto S.", nota: 5, data: "Janeiro 2026", texto: "Segunda vez que chamo o Carlos. Sempre pontual, preço justo e serviço de qualidade. Virou meu prestador fixo." },
+      { nome: "Mariana C.", nota: 4, data: "Janeiro 2026", texto: "Muito bom profissional. Montou os móveis do quarto com perfeição. Voltarei a contratar." },
+    ]
+  },
+  {
+    id: 2, nome: "Maria Silva", especialidade: "Diarista / Faxineira",
+    cidade: "Belo Horizonte", estado: "MG",
+    nota: 4.7, avaliacoes: 32, servicos: 58, anos: 6,
+    descricao: "Especialista em limpeza residencial e comercial. Trabalho com produtos de qualidade e pontualidade garantida. Atendo toda região de BH.",
+    plano: "essencial", selos: ["fundador","bem"], disponivel: true,
+    avatar: "🧹", telefone: "31900000001", valor_hora: 60,
+    reviews: [
+      { nome: "Claudia R.", nota: 5, data: "Março 2026", texto: "Casa impecável! Maria é muito caprichosa e pontual. Recomendo demais." },
+    ]
+  },
+  {
+    id: 3, nome: "João Pereira", especialidade: "Eletricista",
+    cidade: "Contagem", estado: "MG",
+    nota: 4.8, avaliacoes: 28, servicos: 41, anos: 8,
+    descricao: "Eletricista com CREA. Instalações, reparos, quadros elétricos, chuveiros, tomadas e iluminação. Atendo Contagem e BH com rapidez e segurança.",
+    plano: "profissional", selos: ["fundador","bem","dito"], disponivel: true,
+    avatar: "⚡", telefone: "31900000002", valor_hora: 100,
+    reviews: [
+      { nome: "Fernando M.", nota: 5, data: "Fevereiro 2026", texto: "Resolveu o problema do quadro elétrico que outros não conseguiram. Muito competente." },
+      { nome: "Lúcia P.", nota: 5, data: "Janeiro 2026", texto: "Rápido e eficiente. Instalou 4 tomadas e verificou toda a fiação. Ótimo preço." },
+    ]
+  },
+  {
+    id: 4, nome: "Ana Costa", especialidade: "Jardineiro",
+    cidade: "Belo Horizonte", estado: "MG",
+    nota: 4.6, avaliacoes: 19, servicos: 34, anos: 4,
+    descricao: "Paisagismo e manutenção de jardins residenciais e condomínios. Poda, plantio, irrigação e projeto de jardins.",
+    plano: "essencial", selos: ["fundador"], disponivel: false,
+    avatar: "🌿", telefone: "31900000003", valor_hora: 70, reviews: []
+  },
+  {
+    id: 5, nome: "Roberto Lima", especialidade: "Encanador / Hidráulico",
+    cidade: "Belo Horizonte", estado: "MG",
+    nota: 4.5, avaliacoes: 22, servicos: 39, anos: 12,
+    descricao: "Encanador com experiência em reparos de vazamentos, instalação de banheiros, caixas d'água e sistemas hidráulicos completos.",
+    plano: "profissional", selos: ["bem"], disponivel: true,
+    avatar: "🔩", telefone: "31900000004", valor_hora: 90, reviews: []
+  },
+  {
+    id: 6, nome: "Fernanda Souza", especialidade: "Pintor",
+    cidade: "Sarzedo", estado: "MG",
+    nota: 4.7, avaliacoes: 15, servicos: 27, anos: 7,
+    descricao: "Pintura residencial e comercial. Textura, grafiato, pintura interna e externa. Trabalho com materiais de qualidade e acabamento impecável.",
+    plano: "profissional", selos: ["fundador","bem"], disponivel: true,
+    avatar: "🎨", telefone: "31900000005", valor_hora: 85, reviews: []
+  }
+];
+
+const SELOS_MAP = {
+  fundador: '<span class="selo selo-fundador">⚡ FUNDADOR</span>',
+  bem:      '<span class="selo selo-bem">bem-FEITO✅</span>',
+  perfeito: '<span class="selo selo-perfeito">perFEITO✅</span>',
+  dito:     '<span class="selo selo-dito">Dito e FEITO✅</span>'
+};
+
+const PLANOS = { essencial: 'Essencial', profissional: 'Profissional', especialista: 'Especialista', premium: 'Premium' };
+
+function stars(n) {
+  return '★'.repeat(Math.floor(n)) + (n % 1 >= 0.5 ? '½' : '');
+}
+
+// ── Ler ID da URL ────────────────────────────────────
+function getParam(k) {
+  return new URLSearchParams(window.location.search).get(k);
+}
+
+function init() {
+  const id = parseInt(getParam('id') || '1');
+  const p = PRESTADORES.find(x => x.id === id) || PRESTADORES[0];
+
+  // Hero
+  document.getElementById('avatar').childNodes[0].textContent = p.avatar;
+  if (!p.disponivel) document.getElementById('disponivel-dot').style.display = 'none';
+  document.getElementById('p-nome').textContent = p.nome;
+  document.getElementById('p-esp').textContent = p.especialidade;
+  document.getElementById('p-local').textContent = `📍 ${p.cidade}, ${p.estado}`;
+  document.getElementById('p-selos').innerHTML = p.selos.map(s => SELOS_MAP[s] || '').join('');
+  document.getElementById('p-stars').textContent = stars(p.nota);
+  document.getElementById('p-nota').textContent = p.nota.toFixed(1);
+  document.getElementById('p-aval-count').textContent = `(${p.avaliacoes} avaliações)`;
+
+  // Stats
+  document.getElementById('s-nota').textContent = p.nota.toFixed(1);
+  document.getElementById('s-aval').textContent = p.avaliacoes;
+  document.getElementById('s-serv').textContent = p.servicos;
+  document.getElementById('s-anos').textContent = p.anos;
+
+  // Sobre
+  document.getElementById('p-descricao').textContent = p.descricao;
+
+  // Info grid
+  document.getElementById('i-esp').textContent = p.especialidade;
+  document.getElementById('i-local').textContent = `${p.cidade}, ${p.estado}`;
+  document.getElementById('i-anos').textContent = `${p.anos} anos`;
+  document.getElementById('i-valor').textContent = p.valor_hora ? `R$${p.valor_hora}/hora` : 'A combinar';
+  document.getElementById('i-disp').textContent = p.disponivel ? '🟢 Disponível agora' : '🔴 Indisponível';
+  document.getElementById('i-plano').textContent = `FEITO✅ ${PLANOS[p.plano]}`;
+
+  // Avaliações
+  const avalArea = document.getElementById('avaliacoes-area');
+  if (p.reviews && p.reviews.length > 0) {
+    avalArea.innerHTML = `<div class="aval-list">` +
+      p.reviews.map(r => `
+        <div class="aval-item">
+          <div class="aval-top">
+            <span class="aval-nome">${r.nome}</span>
+            <span class="aval-nota">${'★'.repeat(r.nota)}</span>
+          </div>
+          <div class="aval-data">${r.data}</div>
+          <div class="aval-texto">${r.texto}</div>
+        </div>
+      `).join('') + `</div>`;
+  } else {
+    avalArea.innerHTML = `<div class="aval-empty">Ainda sem avaliações. Seja o primeiro a contratar!</div>`;
+  }
+
+  // CTAs
+  const leadUrl = `feito-lead.html?prestador=${p.id}&nome=${encodeURIComponent(p.nome)}&esp=${encodeURIComponent(p.especialidade)}`;
+  document.getElementById('btn-orcamento').href = leadUrl;
+  document.getElementById('btn-wpp').href = `https://wa.me/55${p.telefone}?text=Olá%20${encodeURIComponent(p.nome)}!%20Te%20encontrei%20na%20FEITO✅%20e%20gostaria%20de%20um%20orçamento.`;
+
+  // Título da página
+  document.title = `FEITO✅ — ${p.nome} · ${p.especialidade}`;
+}
+
+init();
+</script>
+</body>
+</html>

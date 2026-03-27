@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEITO✅ — Avaliar Serviço</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1A1A2E;--navyM:#232341;--navyL:#2D2D50;--gold:#C9A84C;--goldL:#E8C76A;--green:#1A8C4E;--red:#C9370A;--grey:#9999BB;--offW:#F0EEE8;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--offW);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;padding-bottom:60px;}
+
+  nav{background:rgba(26,26,46,.97);border-bottom:1px solid rgba(201,168,76,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:#fff;text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+
+  .hero{background:var(--navyM);border-bottom:1px solid rgba(201,168,76,.1);padding:28px 24px;text-align:center;}
+  .hero-label{font-size:.72rem;font-weight:700;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,6vw,2.6rem);color:#fff;margin-bottom:6px;}
+  .hero-sub{font-size:.88rem;color:var(--grey);max-width:420px;margin:0 auto;line-height:1.6;}
+
+  .main{max-width:520px;margin:0 auto;padding:32px 20px;}
+
+  /* Card do prestador */
+  .prestador-mini{background:var(--navyL);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:center;margin-bottom:28px;}
+  .mini-avatar{width:52px;height:52px;border-radius:50%;background:var(--navy);border:2px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+  .mini-info h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px;}
+  .mini-info p{font-size:.8rem;color:var(--gold);}
+  .mini-serv{font-size:.75rem;color:var(--grey);margin-top:3px;}
+
+  /* Estrelas */
+  .stars-section{text-align:center;margin-bottom:28px;}
+  .stars-label{font-size:.75rem;font-weight:700;letter-spacing:3px;color:var(--grey);text-transform:uppercase;margin-bottom:14px;}
+  .stars-row{display:flex;justify-content:center;gap:8px;margin-bottom:10px;}
+  .star{font-size:2.6rem;cursor:pointer;transition:transform .15s;user-select:none;filter:grayscale(1) opacity(.3);}
+  .star.active{filter:none;transform:scale(1.1);}
+  .star:hover{transform:scale(1.15);}
+  .stars-desc{font-size:.88rem;color:var(--grey);min-height:22px;transition:color .2s;}
+  .stars-desc.filled{color:var(--gold);}
+  .field-error-nota{font-size:.75rem;color:#ff6b6b;text-align:center;margin-top:6px;display:none;}
+
+  /* Aspectos */
+  .aspectos-section{margin-bottom:24px;}
+  .aspectos-label{font-size:.72rem;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+  .aspectos-grid{display:flex;flex-wrap:wrap;gap:8px;}
+  .aspecto{background:var(--navyL);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:7px 14px;font-size:.8rem;color:var(--grey);cursor:pointer;transition:all .2s;user-select:none;}
+  .aspecto:hover{border-color:rgba(201,168,76,.3);}
+  .aspecto.selected{background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold);}
+
+  /* Comentário */
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.5px;color:var(--grey);text-transform:uppercase;margin-bottom:6px;}
+  .field textarea{width:100%;background:var(--navyL);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:14px 16px;color:var(--offW);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;resize:vertical;min-height:100px;transition:border-color .2s;}
+  .field textarea:focus{border-color:var(--gold);}
+  .field textarea::placeholder{color:rgba(153,153,187,.4);}
+  .char-note{font-size:.72rem;color:var(--grey);margin-top:4px;}
+
+  /* Recomendação */
+  .recom-section{margin-bottom:24px;}
+  .recom-label{font-size:.75rem;font-weight:700;letter-spacing:.5px;color:var(--grey);text-transform:uppercase;margin-bottom:10px;}
+  .recom-options{display:flex;gap:10px;}
+  .recom-btn{flex:1;padding:12px;border-radius:8px;border:2px solid rgba(255,255,255,.08);background:var(--navyL);color:var(--grey);font-size:.88rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;text-align:center;}
+  .recom-btn:hover{border-color:rgba(201,168,76,.3);}
+  .recom-btn.sim{border-color:var(--green);background:rgba(26,140,78,.1);color:#4ACA7F;}
+  .recom-btn.nao{border-color:var(--red);background:rgba(201,55,10,.1);color:#FF8060;}
+
+  .btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:800;font-size:1rem;padding:16px;border:none;border-radius:6px;cursor:pointer;transition:all .2s;}
+  .btn-submit:hover{background:var(--goldL);transform:translateY(-1px);}
+
+  /* Sucesso */
+  .success-screen{display:none;text-align:center;padding:48px 20px;}
+  .success-icon{font-size:4rem;margin-bottom:16px;}
+  .success-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#fff;margin-bottom:10px;}
+  .success-nota{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);margin-bottom:6px;}
+  .success-stars{font-size:1.6rem;margin-bottom:16px;}
+  .success-sub{font-size:.9rem;color:var(--grey);line-height:1.7;margin-bottom:28px;}
+  .selos-earned{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;}
+  .selo-earned{font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:20px;background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);}
+  .btn-voltar{display:inline-block;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-weight:700;padding:12px 28px;border-radius:6px;text-decoration:none;transition:all .2s;}
+  .btn-voltar:hover{border-color:var(--gold);background:rgba(201,168,76,.08);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">FEITO<span>✅</span></a>
+</nav>
+
+<div class="hero">
+  <p class="hero-label">Serviço realizado</p>
+  <h1 class="hero-title">Como foi o serviço?</h1>
+  <p class="hero-sub">Sua avaliação ajuda outros clientes e recompensa os melhores profissionais com selos de mérito.</p>
+</div>
+
+<div class="main">
+
+  <div id="form-area">
+    <!-- Card prestador -->
+    <div class="prestador-mini">
+      <div class="mini-avatar" id="mini-avatar">🔧</div>
+      <div class="mini-info">
+        <h3 id="mini-nome">Carlos Augusto</h3>
+        <p id="mini-esp">Marido de Aluguel</p>
+        <p class="mini-serv" id="mini-serv">Serviço realizado</p>
+      </div>
+    </div>
+
+    <!-- Estrelas -->
+    <div class="stars-section">
+      <div class="stars-label">Nota geral</div>
+      <div class="stars-row">
+        <span class="star" onclick="setNota(1)" id="s1">★</span>
+        <span class="star" onclick="setNota(2)" id="s2">★</span>
+        <span class="star" onclick="setNota(3)" id="s3">★</span>
+        <span class="star" onclick="setNota(4)" id="s4">★</span>
+        <span class="star" onclick="setNota(5)" id="s5">★</span>
+      </div>
+      <div class="stars-desc" id="stars-desc">Toque nas estrelas para avaliar</div>
+      <div class="field-error-nota" id="err-nota">Selecione uma nota para continuar.</div>
+    </div>
+
+    <!-- Aspectos -->
+    <div class="aspectos-section">
+      <div class="aspectos-label">O que se destacou?</div>
+      <div class="aspectos-grid">
+        <span class="aspecto" onclick="toggleAspecto(this)">👍 Pontualidade</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">✅ Qualidade do serviço</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">💬 Comunicação</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">💰 Preço justo</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">🧹 Limpeza e organização</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">⚡ Rapidez</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">🔧 Materiais de qualidade</span>
+        <span class="aspecto" onclick="toggleAspecto(this)">🤝 Profissionalismo</span>
+      </div>
+    </div>
+
+    <!-- Comentário -->
+    <div class="field">
+      <label>Seu comentário (opcional)</label>
+      <textarea id="comentario" placeholder="Conte como foi a experiência. Outros clientes irão ler isso antes de contratar."></textarea>
+      <div class="char-note"><span id="char-count">0</span>/400 caracteres</div>
+    </div>
+
+    <!-- Recomendação -->
+    <div class="recom-section">
+      <div class="recom-label">Você indicaria este profissional?</div>
+      <div class="recom-options">
+        <button class="recom-btn" id="btn-sim" onclick="selectRecom('sim')">👍 Sim, indicaria</button>
+        <button class="recom-btn" id="btn-nao" onclick="selectRecom('nao')">👎 Não indicaria</button>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="enviarAvaliacao()">✅ Publicar avaliação</button>
+  </div>
+
+  <!-- Sucesso -->
+  <div class="success-screen" id="success">
+    <div class="success-icon">🏆</div>
+    <h2 class="success-title">Avaliação publicada!</h2>
+    <div class="success-nota" id="s-nota-num">—</div>
+    <div class="success-stars" id="s-stars">—</div>
+    <p class="success-sub">
+      Sua avaliação foi registrada e já aparece no perfil do profissional.<br>
+      Obrigado por contribuir com a comunidade FEITO✅.
+    </p>
+    <div class="selos-earned" id="selos-earned"></div>
+    <a class="btn-voltar" href="feito-busca.html">Buscar outros prestadores →</a>
+  </div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const prestNome = params.get('nome') || 'Carlos Augusto';
+const prestEsp  = params.get('esp')  || 'Marido de Aluguel';
+const prestId   = params.get('id')   || '1';
+const AVATARS   = {'1':'🔧','2':'🧹','3':'⚡','4':'🌿','5':'🔩','6':'🎨'};
+
+document.getElementById('mini-nome').textContent = prestNome;
+document.getElementById('mini-esp').textContent  = prestEsp;
+document.getElementById('mini-avatar').textContent = AVATARS[prestId] || '🔧';
+
+const DESCS = ['','😞 Ruim','😕 Regular','😐 Ok','😊 Bom','🤩 Excelente!'];
+let notaAtual = 0;
+let recomAtual = null;
+
+function setNota(n) {
+  notaAtual = n;
+  for (let i = 1; i <= 5; i++) {
+    const el = document.getElementById('s' + i);
+    el.classList.toggle('active', i <= n);
+  }
+  const desc = document.getElementById('stars-desc');
+  desc.textContent = DESCS[n];
+  desc.className = 'stars-desc filled';
+  document.getElementById('err-nota').style.display = 'none';
+}
+
+function toggleAspecto(el) { el.classList.toggle('selected'); }
+
+function selectRecom(val) {
+  recomAtual = val;
+  document.getElementById('btn-sim').className = 'recom-btn' + (val === 'sim' ? ' sim' : '');
+  document.getElementById('btn-nao').className = 'recom-btn' + (val === 'nao' ? ' nao' : '');
+}
+
+document.getElementById('comentario').addEventListener('input', function() {
+  if (this.value.length > 400) this.value = this.value.slice(0,400);
+  document.getElementById('char-count').textContent = this.value.length;
+});
+
+function enviarAvaliacao() {
+  if (!notaAtual) {
+    document.getElementById('err-nota').style.display = 'block';
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+    return;
+  }
+
+  const aspectos = [...document.querySelectorAll('.aspecto.selected')].map(a => a.textContent.trim());
+  const comentario = document.getElementById('comentario').value.trim();
+
+  // Monta mensagem WhatsApp
+  const msg = encodeURIComponent(
+    `⭐ *NOVA AVALIAÇÃO — FEITO✅*\n\n` +
+    `Prestador: ${prestNome}\n` +
+    `Nota: ${'★'.repeat(notaAtual)} (${notaAtual}/5)\n` +
+    `${aspectos.length ? 'Destaques: ' + aspectos.join(', ') + '\n' : ''}` +
+    `${comentario ? 'Comentário: ' + comentario + '\n' : ''}` +
+    `${recomAtual === 'sim' ? '👍 Cliente recomenda o profissional\n' : recomAtual === 'nao' ? '👎 Cliente não recomenda\n' : ''}` +
+    `\n_Avaliação registrada via FEITO✅_`
+  );
+  window.open(`https://wa.me/5531992084142?text=${msg}`, '_blank');
+
+  // Sucesso
+  document.getElementById('form-area').style.display = 'none';
+  const s = document.getElementById('success');
+  s.style.display = 'block';
+  document.getElementById('s-nota-num').textContent = notaAtual + '.0';
+  document.getElementById('s-stars').textContent = '★'.repeat(notaAtual) + '☆'.repeat(5 - notaAtual);
+
+  // Selos conquistados (simulado)
+  const selos = [];
+  if (notaAtual >= 4) selos.push('bem-FEITO✅ em progresso');
+  if (notaAtual === 5) selos.push('perFEITO✅ em progresso');
+  if (selos.length) {
+    document.getElementById('selos-earned').innerHTML = selos.map(s => `<span class="selo-earned">✅ ${s}</span>`).join('');
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

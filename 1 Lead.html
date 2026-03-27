@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEITO✅ — Solicitar Orçamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#1A1A2E; --navyM:#232341; --navyL:#2D2D50;
+    --gold:#C9A84C; --goldL:#E8C76A; --green:#1A8C4E;
+    --red:#C9370A; --grey:#9999BB; --offW:#F0EEE8;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--offW);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;padding-bottom:60px;}
+  nav{background:rgba(26,26,46,.97);border-bottom:1px solid rgba(201,168,76,.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:#fff;text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+  .nav-back{font-size:.85rem;color:var(--grey);text-decoration:none;}
+  .nav-back:hover{color:var(--gold);}
+
+  .hero{background:var(--navyM);border-bottom:1px solid rgba(201,168,76,.1);padding:28px 24px;}
+  .prestador-card-mini{max-width:560px;margin:0 auto;background:var(--navyL);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:center;}
+  .mini-avatar{width:48px;height:48px;border-radius:50%;background:var(--navy);border:2px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+  .mini-info h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:2px;}
+  .mini-info p{font-size:.8rem;color:var(--gold);}
+  .mini-badge{margin-left:auto;background:rgba(26,140,78,.15);border:1px solid var(--green);color:#4ACA7F;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+
+  .form-container{max-width:560px;margin:0 auto;padding:32px 20px;}
+  .form-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;margin-bottom:6px;}
+  .form-sub{font-size:.88rem;color:var(--grey);margin-bottom:28px;line-height:1.6;}
+
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:.75rem;font-weight:700;letter-spacing:.5px;color:var(--grey);text-transform:uppercase;margin-bottom:6px;}
+  .field label span{color:var(--red);}
+  .field input,.field select,.field textarea{width:100%;background:var(--navyL);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:14px 16px;color:var(--offW);font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);}
+  .field input::placeholder,.field textarea::placeholder{color:rgba(153,153,187,.45);}
+  .field select option{background:var(--navyM);}
+  .field textarea{resize:vertical;min-height:120px;}
+  .field-note{font-size:.75rem;color:var(--grey);margin-top:5px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field-error{font-size:.75rem;color:#ff6b6b;margin-top:4px;display:none;}
+
+  /* Urgência */
+  .urgencia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+  .urg-card{background:var(--navyL);border:2px solid rgba(255,255,255,.06);border-radius:8px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s;}
+  .urg-card:hover{border-color:rgba(201,168,76,.3);}
+  .urg-card.selected{border-color:var(--gold);background:rgba(201,168,76,.08);}
+  .urg-card input{display:none;}
+  .urg-icon{font-size:1.4rem;margin-bottom:4px;}
+  .urg-label{font-size:.75rem;color:var(--grey);line-height:1.3;}
+  .urg-card.selected .urg-label{color:var(--gold);}
+
+  .garantia-nota{background:rgba(26,140,78,.08);border:1px solid rgba(26,140,78,.2);border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;margin-bottom:24px;}
+  .garantia-nota-icon{font-size:1.1rem;flex-shrink:0;}
+  .garantia-nota-text{font-size:.8rem;color:var(--grey);line-height:1.6;}
+  .garantia-nota-text strong{color:#4ACA7F;}
+
+  .btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:800;font-size:1rem;padding:16px;border:none;border-radius:6px;cursor:pointer;transition:all .2s;margin-top:4px;}
+  .btn-submit:hover{background:var(--goldL);transform:translateY(-1px);}
+
+  .success-screen{display:none;text-align:center;padding:40px 20px;}
+  .success-icon{font-size:4rem;margin-bottom:16px;}
+  .success-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#fff;margin-bottom:10px;}
+  .success-sub{font-size:.92rem;color:var(--grey);line-height:1.7;margin-bottom:24px;}
+  .success-timer{background:var(--navyL);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:16px;margin-bottom:20px;}
+  .success-timer p{font-size:.82rem;color:var(--grey);}
+  .success-timer strong{color:var(--gold);}
+  .btn-buscar{display:inline-block;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;transition:all .2s;}
+  .btn-buscar:hover{border-color:var(--gold);background:rgba(201,168,76,.08);}
+
+  @media(max-width:480px){
+    .urgencia-grid{grid-template-columns:repeat(3,1fr);}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">FEITO<span>✅</span></a>
+  <a class="nav-back" id="nav-back" href="feito-busca.html">← Voltar</a>
+</nav>
+
+<div class="hero">
+  <div class="prestador-card-mini">
+    <div class="mini-avatar" id="mini-avatar">🔧</div>
+    <div class="mini-info">
+      <h3 id="mini-nome">Prestador</h3>
+      <p id="mini-esp">Especialidade</p>
+    </div>
+    <div class="mini-badge">✅ Verificado</div>
+  </div>
+</div>
+
+<div class="form-container">
+  <div id="form-area">
+    <h2 class="form-title">Solicitar orçamento</h2>
+    <p class="form-sub">Preencha o formulário. O prestador entrará em contato pelo seu WhatsApp em breve.</p>
+
+    <div class="field">
+      <label>Seu nome <span>*</span></label>
+      <input type="text" id="cli-nome" placeholder="Seu nome completo" autocomplete="name">
+      <div class="field-error" id="err-nome">Campo obrigatório.</div>
+    </div>
+
+    <div class="field">
+      <label>Seu WhatsApp <span>*</span></label>
+      <input type="tel" id="cli-tel" placeholder="(31) 99999-9999" autocomplete="tel">
+      <div class="field-error" id="err-tel">Campo obrigatório.</div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Cidade do serviço <span>*</span></label>
+        <input type="text" id="cli-cidade" placeholder="Ex: Belo Horizonte">
+        <div class="field-error" id="err-cidade">Campo obrigatório.</div>
+      </div>
+      <div class="field">
+        <label>Estado</label>
+        <select id="cli-estado">
+          <option value="">UF</option>
+          <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+          <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+          <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+          <option selected>MG</option><option>PA</option><option>PB</option><option>PR</option>
+          <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+          <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+          <option>SP</option><option>SE</option><option>TO</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Descreva o que você precisa <span>*</span></label>
+      <textarea id="cli-desc" placeholder="Ex: Preciso trocar 3 tomadas e instalar um interruptor duplo no quarto. A fiação está exposta e precisa ser corrigida também."></textarea>
+      <p class="field-note"><span id="char-count">0</span> caracteres — quanto mais detalhes, melhor o orçamento.</p>
+      <div class="field-error" id="err-desc">Descreva o serviço (mínimo 20 caracteres).</div>
+    </div>
+
+    <div class="field">
+      <label>Urgência</label>
+      <div class="urgencia-grid">
+        <label class="urg-card" onclick="selectUrg(this,'urgente')">
+          <input type="radio" name="urgencia" value="urgente">
+          <div class="urg-icon">🔴</div>
+          <div class="urg-label">Urgente<br>hoje/amanhã</div>
+        </label>
+        <label class="urg-card selected" onclick="selectUrg(this,'normal')">
+          <input type="radio" name="urgencia" value="normal" checked>
+          <div class="urg-icon">🟡</div>
+          <div class="urg-label">Normal<br>essa semana</div>
+        </label>
+        <label class="urg-card" onclick="selectUrg(this,'flexivel')">
+          <input type="radio" name="urgencia" value="flexivel">
+          <div class="urg-icon">🟢</div>
+          <div class="urg-label">Flexível<br>sem pressa</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="garantia-nota">
+      <div class="garantia-nota-icon">🛡️</div>
+      <div class="garantia-nota-text">
+        <strong>Proteção FEITO✅:</strong> Se o prestador não responder em 72 horas, o lead não é cobrado dele — e você pode buscar outro profissional sem problemas.
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="enviarLead()">✅ Enviar solicitação de orçamento</button>
+  </div>
+
+  <!-- Sucesso -->
+  <div class="success-screen" id="success">
+    <div class="success-icon">✅</div>
+    <h2 class="success-title">Solicitação enviada!</h2>
+    <p class="success-sub" id="success-msg"></p>
+    <div class="success-timer">
+      <p>⏱️ Prazo de resposta: <strong>até 72 horas</strong><br>
+      Se não houver resposta, o prestador não é cobrado e você pode buscar outro profissional.</p>
+    </div>
+    <a class="btn-buscar" href="feito-busca.html">← Buscar outros prestadores</a>
+  </div>
+</div>
+
+<script>
+// ── Parâmetros da URL ────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const prestId   = params.get('prestador') || '1';
+const prestNome = params.get('nome') || 'Prestador';
+const prestEsp  = params.get('esp') || 'Especialidade';
+
+const AVATARS = {'1':'🔧','2':'🧹','3':'⚡','4':'🌿','5':'🔩','6':'🎨'};
+const TELS    = {'1':'31992084142','2':'31900000001','3':'31900000002','4':'31900000003','5':'31900000004','6':'31900000005'};
+
+document.getElementById('mini-nome').textContent = prestNome;
+document.getElementById('mini-esp').textContent  = prestEsp;
+document.getElementById('mini-avatar').textContent = AVATARS[prestId] || '🔧';
+document.getElementById('nav-back').href = `feito-perfil.html?id=${prestId}`;
+
+// ── Urgência ─────────────────────────────────────────
+let urgSelecionada = 'normal';
+function selectUrg(el, val) {
+  document.querySelectorAll('.urg-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  urgSelecionada = val;
+}
+
+// ── Contador ─────────────────────────────────────────
+document.getElementById('cli-desc').addEventListener('input', function() {
+  document.getElementById('char-count').textContent = this.value.length;
+});
+
+// ── Máscara tel ──────────────────────────────────────
+document.getElementById('cli-tel').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g,'');
+  if (v.length >= 11) v = v.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+  else if (v.length >= 7) v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+  else if (v.length >= 3) v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+  else v = v.replace(/^(\d*)/, '($1');
+  e.target.value = v;
+});
+
+// ── Validar ──────────────────────────────────────────
+function showErr(id, show) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = show ? 'block' : 'none';
+}
+
+function enviarLead() {
+  const nome   = document.getElementById('cli-nome').value.trim();
+  const tel    = document.getElementById('cli-tel').value.trim();
+  const cidade = document.getElementById('cli-cidade').value.trim();
+  const desc   = document.getElementById('cli-desc').value.trim();
+
+  showErr('err-nome', !nome);
+  showErr('err-tel', !tel);
+  showErr('err-cidade', !cidade);
+  showErr('err-desc', desc.length < 20);
+
+  if (!nome || !tel || !cidade || desc.length < 20) return;
+
+  const urgLabel = { urgente: '🔴 Urgente (hoje/amanhã)', normal: '🟡 Normal (essa semana)', flexivel: '🟢 Flexível (sem pressa)' };
+  const estado = document.getElementById('cli-estado').value;
+
+  // Monta mensagem WhatsApp para o prestador
+  const msg = encodeURIComponent(
+    `🔔 *NOVO LEAD — FEITO✅*\n\n` +
+    `👤 Cliente: ${nome}\n` +
+    `📱 WhatsApp: ${tel}\n` +
+    `📍 Cidade: ${cidade}${estado ? '/' + estado : ''}\n` +
+    `⚡ Urgência: ${urgLabel[urgSelecionada]}\n\n` +
+    `📝 *Descrição do serviço:*\n${desc}\n\n` +
+    `_Lead recebido via FEITO✅ · Responda em até 72h_`
+  );
+
+  const telPrestador = TELS[prestId] || '31992084142';
+  window.open(`https://wa.me/55${telPrestador}?text=${msg}`, '_blank');
+
+  // Mostra sucesso
+  document.getElementById('form-area').style.display = 'none';
+  const s = document.getElementById('success');
+  s.style.display = 'block';
+  document.getElementById('success-msg').innerHTML =
+    `<strong>${nome.split(' ')[0]}</strong>, sua solicitação foi enviada para <strong>${prestNome}</strong>.<br><br>
+    O profissional entrará em contato pelo seu WhatsApp <strong>${tel}</strong> assim que possível.`;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEITO✅ — Institucional</title>
+<meta name="description" content="Conheça a FEITO✅ — missão, valores, visão, termos de uso, política de privacidade e suporte.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A1A2E;--navyM:#232341;--navyL:#2D2D50;
+    --gold:#C9A84C;--goldL:#E8C76A;--green:#1A8C4E;
+    --red:#C9370A;--grey:#9999BB;--offW:#F0EEE8;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--offW);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+
+  /* ── NAV ── */
+  nav{
+    background:rgba(26,26,46,.98);
+    border-bottom:1px solid rgba(201,168,76,.2);
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    position:sticky;top:0;z-index:200;
+  }
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:#fff;text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+  .nav-back{font-size:.85rem;color:var(--grey);text-decoration:none;}
+  .nav-back:hover{color:var(--gold);}
+
+  /* ── SIDEBAR + LAYOUT ── */
+  .page-wrap{display:flex;max-width:1000px;margin:0 auto;padding:0 16px;}
+
+  .sidebar{
+    width:220px;flex-shrink:0;
+    padding:32px 0 32px 0;
+    position:sticky;top:60px;
+    height:calc(100vh - 60px);
+    overflow-y:auto;
+  }
+  .sidebar-section{margin-bottom:24px;}
+  .sidebar-label{font-size:.65rem;font-weight:700;letter-spacing:4px;color:var(--grey);text-transform:uppercase;padding:0 16px;margin-bottom:8px;display:block;}
+  .sidebar-link{
+    display:block;padding:8px 16px;
+    font-size:.85rem;color:var(--grey);
+    text-decoration:none;border-left:2px solid transparent;
+    transition:all .2s;
+  }
+  .sidebar-link:hover{color:var(--offW);border-left-color:rgba(201,168,76,.4);}
+  .sidebar-link.active{color:var(--gold);border-left-color:var(--gold);font-weight:500;}
+
+  .content{flex:1;padding:40px 0 80px 48px;min-width:0;}
+
+  /* ── SECTION BLOCKS ── */
+  .inst-section{margin-bottom:64px;scroll-margin-top:80px;}
+  .inst-section:last-child{margin-bottom:0;}
+
+  .section-eyebrow{
+    font-size:.65rem;font-weight:700;letter-spacing:5px;
+    color:var(--gold);text-transform:uppercase;margin-bottom:10px;
+  }
+  .section-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2rem,5vw,2.8rem);color:#fff;
+    margin-bottom:20px;line-height:1.1;
+  }
+  .section-divider{
+    width:48px;height:3px;background:var(--gold);
+    border-radius:2px;margin-bottom:24px;
+  }
+  .body-text{font-size:.95rem;color:var(--grey);line-height:1.85;margin-bottom:16px;}
+  .body-text strong{color:var(--offW);}
+  .body-text a{color:var(--gold);text-decoration:none;}
+  .body-text a:hover{text-decoration:underline;}
+
+  /* ── HERO INSTITUCIONAL ── */
+  .inst-hero{
+    background:linear-gradient(135deg,var(--navyL) 0%,var(--navyM) 100%);
+    border-bottom:1px solid rgba(201,168,76,.12);
+    padding:56px 24px;text-align:center;
+  }
+  .inst-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,7vw,3.6rem);color:#fff;margin-bottom:8px;}
+  .inst-hero h1 span{color:var(--gold);}
+  .inst-hero p{font-size:1rem;color:var(--grey);max-width:500px;margin:0 auto;}
+
+  /* ── ÂNCORAS MOBILE ── */
+  .mobile-anchors{
+    display:none;
+    overflow-x:auto;white-space:nowrap;
+    padding:12px 16px;
+    background:var(--navyM);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    gap:8px;
+  }
+  .mobile-anchor{
+    display:inline-block;padding:7px 14px;
+    background:var(--navyL);border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;font-size:.78rem;color:var(--grey);
+    text-decoration:none;
+  }
+  .mobile-anchor:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ── CARDS ── */
+  .cards-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+  .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px;}
+  .card{background:var(--navyL);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:20px;}
+  .card.gold{border-color:rgba(201,168,76,.25);}
+  .card-icon{font-size:1.6rem;margin-bottom:10px;}
+  .card-title{font-weight:700;font-size:.92rem;color:#fff;margin-bottom:6px;}
+  .card-text{font-size:.82rem;color:var(--grey);line-height:1.65;}
+
+  /* ── VALORES ── */
+  .valores-list{display:flex;flex-direction:column;gap:12px;}
+  .valor-item{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--navyL);border-radius:8px;padding:16px;
+    border-left:3px solid var(--gold);
+  }
+  .valor-num{
+    font-family:'Bebas Neue',sans-serif;font-size:1.8rem;
+    color:rgba(201,168,76,.3);line-height:1;flex-shrink:0;
+    width:32px;text-align:right;
+  }
+  .valor-content h4{font-weight:700;font-size:.92rem;color:#fff;margin-bottom:4px;}
+  .valor-content p{font-size:.82rem;color:var(--grey);line-height:1.6;}
+
+  /* ── LEGAL ── */
+  .legal-box{
+    background:var(--navyL);border:1px solid rgba(255,255,255,.06);
+    border-radius:10px;padding:24px;margin-bottom:20px;
+  }
+  .legal-box h3{font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;}
+  .legal-box .legal-date{font-size:.72rem;color:var(--grey);margin-bottom:16px;}
+  .legal-box h4{font-size:.8rem;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin:18px 0 8px;}
+  .legal-box p{font-size:.85rem;color:var(--grey);line-height:1.8;margin-bottom:10px;}
+  .legal-box ul{margin:8px 0 10px 20px;}
+  .legal-box li{font-size:.85rem;color:var(--grey);line-height:1.8;margin-bottom:4px;}
+  .legal-box a{color:var(--gold);}
+
+  /* ── SUPORTE ── */
+  .suporte-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+  .suporte-card{
+    background:var(--navyL);border:1px solid rgba(255,255,255,.06);
+    border-radius:10px;padding:20px;text-align:center;
+    text-decoration:none;transition:all .2s;display:block;
+  }
+  .suporte-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-2px);}
+  .suporte-card .s-icon{font-size:1.8rem;margin-bottom:10px;}
+  .suporte-card .s-title{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:4px;}
+  .suporte-card .s-text{font-size:.78rem;color:var(--grey);line-height:1.5;}
+  .suporte-card.wpp{border-color:rgba(37,211,102,.2);}
+  .suporte-card.wpp:hover{border-color:#25D366;}
+  .suporte-card.email{border-color:rgba(201,168,76,.15);}
+
+  .faq-item{
+    background:var(--navyL);border:1px solid rgba(255,255,255,.06);
+    border-radius:8px;margin-bottom:8px;overflow:hidden;
+  }
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 18px;cursor:pointer;
+    font-size:.9rem;font-weight:500;color:var(--offW);
+    gap:12px;
+  }
+  .faq-q:hover{color:var(--gold);}
+  .faq-arrow{font-size:.8rem;color:var(--grey);transition:transform .25s;flex-shrink:0;}
+  .faq-item.open .faq-arrow{transform:rotate(90deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .3s ease;
+    font-size:.85rem;color:var(--grey);line-height:1.75;
+  }
+  .faq-item.open .faq-a{max-height:300px;}
+  .faq-a-inner{padding:0 18px 16px;}
+
+  /* ── FOOTER ── */
+  .inst-footer{
+    background:var(--navyM);
+    border-top:1px solid rgba(201,168,76,.1);
+    padding:32px 24px;text-align:center;
+    margin-top:64px;
+  }
+  .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;letter-spacing:2px;margin-bottom:6px;}
+  .footer-brand span{color:var(--gold);}
+  .footer-slogan{font-size:.85rem;color:var(--grey);margin-bottom:16px;}
+  .footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+  .footer-links a{font-size:.8rem;color:var(--grey);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-copy{font-size:.72rem;color:rgba(153,153,187,.5);}
+
+  @media(max-width:700px){
+    .sidebar{display:none;}
+    .mobile-anchors{display:flex;}
+    .content{padding:32px 0 64px;}
+    .page-wrap{padding:0 16px;}
+    .cards-2,.cards-3,.suporte-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">FEITO<span>✅</span></a>
+  <a class="nav-back" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">← Início</a>
+</nav>
+
+<!-- Hero -->
+<div class="inst-hero">
+  <h1>A empresa por trás do <span>FEITO✅</span></h1>
+  <p>Plataforma de conexão entre prestadores de serviço e clientes — construída sobre ética, transparência e troca justa.</p>
+</div>
+
+<!-- Âncoras mobile -->
+<div class="mobile-anchors">
+  <a class="mobile-anchor" href="#quem-somos">Quem somos</a>
+  <a class="mobile-anchor" href="#missao">Missão</a>
+  <a class="mobile-anchor" href="#visao">Visão</a>
+  <a class="mobile-anchor" href="#valores">Valores</a>
+  <a class="mobile-anchor" href="#termos">Termos de Uso</a>
+  <a class="mobile-anchor" href="#privacidade">Privacidade</a>
+  <a class="mobile-anchor" href="#suporte">Suporte</a>
+</div>
+
+<div class="page-wrap">
+
+  <!-- Sidebar desktop -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Empresa</span>
+      <a class="sidebar-link active" href="#quem-somos">Quem somos</a>
+      <a class="sidebar-link" href="#missao">Missão</a>
+      <a class="sidebar-link" href="#visao">Visão</a>
+      <a class="sidebar-link" href="#valores">Valores</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Legal</span>
+      <a class="sidebar-link" href="#termos">Termos de Uso</a>
+      <a class="sidebar-link" href="#privacidade">Política de Privacidade</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Ajuda</span>
+      <a class="sidebar-link" href="#suporte">Suporte</a>
+      <a class="sidebar-link" href="#faq">Perguntas frequentes</a>
+    </div>
+  </aside>
+
+  <!-- Conteúdo -->
+  <main class="content">
+
+    <!-- ── QUEM SOMOS ── -->
+    <section class="inst-section" id="quem-somos">
+      <p class="section-eyebrow">Sobre a empresa</p>
+      <h2 class="section-title">Quem somos</h2>
+      <div class="section-divider"></div>
+
+      <p class="body-text">
+        A <strong>FEITO✅</strong> é uma plataforma brasileira de conexão entre prestadores de serviço e clientes, operada pela <strong>DanDaRa Tecnologia</strong>. Nascemos da experiência direta com as falhas do mercado: prestadores cobrados por leads falsos, clientes sem garantia de resposta, e plataformas que lucram do desalinhamento entre as duas partes.
+      </p>
+      <p class="body-text">
+        Construímos um modelo diferente. Assinatura fixa para o prestador — sem cobrança por lead. Lead inválido não descontado. Cliente protegido pelo prazo de resposta. Meritocracia real através dos selos <strong>bem-FEITO✅</strong>, <strong>perFEITO✅</strong> e <strong>Dito e FEITO✅</strong>.
+      </p>
+      <p class="body-text">
+        Operamos em Belo Horizonte e região metropolitana, com expansão planejada para todo o Brasil. Nossa tecnologia é enxuta porque nosso propósito é claro: <strong>conectar quem precisa com quem sabe fazer — de forma justa, para os dois lados.</strong>
+      </p>
+
+      <div class="cards-3" style="margin-top:28px">
+        <div class="card gold">
+          <div class="card-icon">🏠</div>
+          <div class="card-title">Serviços residenciais</div>
+          <div class="card-text">Mais de 180 categorias de serviços para casa e negócios.</div>
+        </div>
+        <div class="card gold">
+          <div class="card-icon">🛡️</div>
+          <div class="card-title">Lead inválido protegido</div>
+          <div class="card-text">Não respondido em 72h = não descontado. Regra pública.</div>
+        </div>
+        <div class="card gold">
+          <div class="card-icon">⭐</div>
+          <div class="card-title">Sistema de selos</div>
+          <div class="card-text">Meritocracia real. Selos conquistados por desempenho comprovado.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MISSÃO ── -->
+    <section class="inst-section" id="missao">
+      <p class="section-eyebrow">Propósito</p>
+      <h2 class="section-title">Missão</h2>
+      <div class="section-divider"></div>
+
+      <p class="body-text">
+        <strong>Conectar prestadores de serviço qualificados a clientes que precisam deles — com transparência, preço justo e respeito por ambos os lados.</strong>
+      </p>
+      <p class="body-text">
+        Acreditamos que quem trabalha com as mãos merece ser tratado com dignidade. E quem contrata merece confiança e compromisso. Nossa missão é eliminar o intermediário predatório e substituí-lo por uma plataforma que serve as duas pontas — sem explorar nenhuma delas.
+      </p>
+      <p class="body-text">
+        O mercado de serviços no Brasil movimenta mais de R$600 bilhões por ano. A maior parte desse valor passa por relações informais, sem garantia, sem histórico e sem proteção. A FEITO✅ existe para estruturar esse mercado — começando por quem constrói o país com o próprio trabalho.
+      </p>
+    </section>
+
+    <!-- ── VISÃO ── -->
+    <section class="inst-section" id="visao">
+      <p class="section-eyebrow">Onde chegamos</p>
+      <h2 class="section-title">Visão</h2>
+      <div class="section-divider"></div>
+
+      <p class="body-text">
+        <strong>Ser a plataforma de referência em serviços qualificados no Brasil — reconhecida pela integridade do modelo, pela qualidade dos prestadores e pela proteção real oferecida a clientes e profissionais.</strong>
+      </p>
+
+      <div class="cards-2" style="margin-top:24px">
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <div class="card-title">Horizonte de 2 anos</div>
+          <div class="card-text">Presença consolidada em Belo Horizonte e região metropolitana. 500+ prestadores ativos. Sistema de selos reconhecido como padrão de qualidade no mercado local.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🇧🇷</div>
+          <div class="card-title">Horizonte de 5 anos</div>
+          <div class="card-text">Expansão nacional. Plataforma tecnológica própria. Parceiros institucionais. Referência em ética e transparência no mercado de serviços brasileiro.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VALORES ── -->
+    <section class="inst-section" id="valores">
+      <p class="section-eyebrow">Princípios</p>
+      <h2 class="section-title">Valores</h2>
+      <div class="section-divider"></div>
+
+      <div class="valores-list">
+        <div class="valor-item">
+          <div class="valor-num">01</div>
+          <div class="valor-content">
+            <h4>Troca justa — sem lesar nenhuma parte</h4>
+            <p>Nossa existência só faz sentido se o prestador ganha o que é justo e o cliente recebe o que foi acordado. Qualquer modelo que explore um lado em benefício do outro não é FEITO✅.</p>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">02</div>
+          <div class="valor-content">
+            <h4>Transparência sem filtro</h4>
+            <p>Regras públicas. Critérios de selos publicados. Política de lead inválido documentada. Não escondemos as regras do jogo — porque nosso modelo funciona quando todos sabem como ele funciona.</p>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">03</div>
+          <div class="valor-content">
+            <h4>Meritocracia real</h4>
+            <p>Selos não se compram. Se conquistam. Avaliações não se manipulam. O sistema de reputação da FEITO✅ reflete desempenho real — e protegemos essa integridade como ativo estratégico.</p>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">04</div>
+          <div class="valor-content">
+            <h4>Dignidade do trabalho</h4>
+            <p>Prestadores de serviço constroem, mantêm e reparam o mundo físico onde todos vivemos. Esse trabalho merece reconhecimento, proteção e acesso igual às melhores oportunidades.</p>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">05</div>
+          <div class="valor-content">
+            <h4>Responsabilidade mútua</h4>
+            <p>Prestador que aceita lead assume o compromisso de responder. Cliente que solicita orçamento tem responsabilidade de confirmar intenção. A plataforma garante as regras. Todo mundo cumpre o combinado.</p>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">06</div>
+          <div class="valor-content">
+            <h4>Execução acima do discurso</h4>
+            <p>Prometemos o que entregamos. Entregamos o que prometemos. "Dito e FEITO✅" não é slogan — é o critério pelo qual medimos tudo o que fazemos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TERMOS DE USO ── -->
+    <section class="inst-section" id="termos">
+      <p class="section-eyebrow">Legal</p>
+      <h2 class="section-title">Termos de Uso</h2>
+      <div class="section-divider"></div>
+
+      <div class="legal-box">
+        <h3>Termos de Uso — FEITO✅</h3>
+        <p class="legal-date">Versão 1.0 · Vigência a partir de março de 2026</p>
+
+        <h4>1. Aceitação</h4>
+        <p>Ao acessar ou utilizar a plataforma FEITO✅, operada pela DanDaRa Tecnologia, o usuário declara ter lido, compreendido e concordado integralmente com estes Termos de Uso. A utilização da plataforma implica aceitação automática.</p>
+
+        <h4>2. Definições</h4>
+        <ul>
+          <li><strong>Plataforma:</strong> serviço digital FEITO✅, acessível via navegador ou aplicativo.</li>
+          <li><strong>Prestador:</strong> pessoa física ou jurídica que oferece serviços por meio da plataforma.</li>
+          <li><strong>Cliente:</strong> pessoa física ou jurídica que solicita serviços através da plataforma.</li>
+          <li><strong>Lead:</strong> solicitação de orçamento ou contato enviada pelo cliente ao prestador.</li>
+          <li><strong>Lead inválido:</strong> lead não respondido pelo prestador dentro do prazo de 72 horas corridas.</li>
+        </ul>
+
+        <h4>3. Cadastro e responsabilidade</h4>
+        <p>O prestador é responsável pela veracidade das informações cadastradas. Informações falsas ou enganosas resultam em suspensão imediata da conta, sem direito a reembolso. A FEITO✅ não é parte nos contratos de serviço celebrados entre prestadores e clientes — atua exclusivamente como plataforma de conexão.</p>
+
+        <h4>4. Política de lead inválido</h4>
+        <p>Lead não respondido em até 72 horas corridas a partir do recebimento é classificado automaticamente como <strong>inválido</strong> e não é descontado da cota mensal do prestador. A contagem inicia no momento do recebimento confirmado pela plataforma. Leads inválidos são registrados e considerados no histórico de responsividade do prestador.</p>
+
+        <h4>5. Assinatura e pagamento</h4>
+        <ul>
+          <li>O período de trial gratuito dura 7 dias corridos a partir da ativação da conta.</li>
+          <li>Após o trial, a cobrança da assinatura inicia automaticamente conforme o plano escolhido.</li>
+          <li>Não há reembolso proporcional por cancelamento antecipado dentro do ciclo vigente.</li>
+          <li>O cancelamento encerra o acesso ao fim do período já pago.</li>
+          <li>Prestadores Fundadores mantêm o preço promocional pelo período contratado.</li>
+        </ul>
+
+        <h4>6. Sistema de selos e avaliações</h4>
+        <p>Os selos <strong>bem-FEITO✅</strong>, <strong>perFEITO✅</strong> e <strong>Dito e FEITO✅</strong> são concedidos exclusivamente com base em critérios objetivos de desempenho. Não é possível adquirir selos por pagamento ou qualquer forma de benefício. Avaliações fraudulentas — de qualquer parte — resultam em suspensão da conta.</p>
+
+        <h4>7. Conduta proibida</h4>
+        <ul>
+          <li>Divulgar dados de contato de clientes para fins alheios ao serviço solicitado.</li>
+          <li>Solicitar pagamento fora da plataforma como forma de burlar comissões.</li>
+          <li>Criar perfis falsos ou duplicados.</li>
+          <li>Publicar avaliações falsas, sejam próprias ou de terceiros.</li>
+          <li>Utilizar a plataforma para fins ilegais ou contrários à ordem pública.</li>
+        </ul>
+
+        <h4>8. Limitação de responsabilidade</h4>
+        <p>A FEITO✅ não se responsabiliza por danos causados durante a prestação do serviço, por inadimplência entre as partes ou por informações incorretas fornecidas pelos usuários. A plataforma é um canal de conexão — a relação contratual é exclusivamente entre prestador e cliente.</p>
+
+        <h4>9. Alterações nos termos</h4>
+        <p>A FEITO✅ pode atualizar estes Termos a qualquer tempo. Alterações substanciais serão comunicadas com pelo menos 15 dias de antecedência via e-mail ou notificação na plataforma. O uso continuado após a comunicação implica aceitação das alterações.</p>
+
+        <h4>10. Foro</h4>
+        <p>Fica eleito o foro da Comarca de Belo Horizonte, Estado de Minas Gerais, para resolução de quaisquer controvérsias decorrentes destes Termos, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+      </div>
+    </section>
+
+    <!-- ── PRIVACIDADE ── -->
+    <section class="inst-section" id="privacidade">
+      <p class="section-eyebrow">Legal · LGPD</p>
+      <h2 class="section-title">Política de Privacidade</h2>
+      <div class="section-divider"></div>
+
+      <div class="legal-box">
+        <h3>Política de Privacidade e Proteção de Dados — FEITO✅</h3>
+        <p class="legal-date">Em conformidade com a Lei nº 13.709/2018 (LGPD) · Versão 1.0 · Março de 2026</p>
+
+        <h4>1. Controlador dos dados</h4>
+        <p>DanDaRa Tecnologia, operadora da plataforma FEITO✅. Para exercício dos seus direitos como titular, entre em contato pelo e-mail: <a href="mailto:privacidade@feito.com.br">privacidade@feito.com.br</a></p>
+
+        <h4>2. Dados coletados</h4>
+        <ul>
+          <li><strong>Prestadores:</strong> nome completo, CPF/CNPJ, telefone, e-mail, cidade, estado, especialidade, descrição profissional, histórico de leads e avaliações.</li>
+          <li><strong>Clientes:</strong> nome, telefone, cidade, descrição do serviço solicitado.</li>
+          <li><strong>Automáticos:</strong> endereço IP, tipo de dispositivo, navegador, páginas acessadas e tempo de sessão.</li>
+        </ul>
+
+        <h4>3. Finalidade do tratamento</h4>
+        <ul>
+          <li>Execução do contrato de prestação de serviços da plataforma.</li>
+          <li>Conexão entre prestadores e clientes.</li>
+          <li>Gestão de assinaturas e cobranças.</li>
+          <li>Comunicações operacionais e de suporte.</li>
+          <li>Cumprimento de obrigações legais e regulatórias.</li>
+          <li>Melhoria contínua da plataforma (dados anonimizados).</li>
+        </ul>
+
+        <h4>4. Base legal (LGPD)</h4>
+        <p>O tratamento de dados é realizado com base no <strong>art. 7º, incisos II (consentimento), V (execução de contrato) e IX (legítimo interesse)</strong> da Lei 13.709/2018, conforme aplicável a cada finalidade.</p>
+
+        <h4>5. Compartilhamento de dados</h4>
+        <p>Os dados de contato do prestador são compartilhados com o cliente exclusivamente quando houver uma solicitação de serviço ativa. Não vendemos, alugamos ou cedemos dados pessoais a terceiros para fins comerciais. Podemos compartilhar dados com:</p>
+        <ul>
+          <li>Processadores de pagamento (para gestão de assinaturas).</li>
+          <li>Autoridades competentes, quando exigido por lei.</li>
+        </ul>
+
+        <h4>6. Direitos do titular</h4>
+        <p>Em conformidade com o art. 18 da LGPD, você tem direito a:</p>
+        <ul>
+          <li>Confirmar a existência e acessar seus dados.</li>
+          <li>Corrigir dados incompletos, inexatos ou desatualizados.</li>
+          <li>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários.</li>
+          <li>Solicitar a portabilidade dos dados.</li>
+          <li>Revogar o consentimento a qualquer tempo.</li>
+          <li>Opor-se ao tratamento realizado com base em legítimo interesse.</li>
+        </ul>
+        <p>Para exercer seus direitos, entre em contato: <a href="mailto:privacidade@feito.com.br">privacidade@feito.com.br</a>. Respondemos em até 15 dias úteis.</p>
+
+        <h4>7. Retenção e eliminação</h4>
+        <p>Dados de prestadores são mantidos pelo período de vigência da conta e por até 5 anos após o encerramento, para cumprimento de obrigações legais. Dados de clientes são mantidos pelo período necessário à execução do serviço solicitado. Após os prazos, os dados são eliminados de forma segura.</p>
+
+        <h4>8. Segurança</h4>
+        <p>Adotamos medidas técnicas e organizacionais adequadas para proteger os dados contra acesso não autorizado, alteração, divulgação ou destruição. Em caso de incidente de segurança com impacto relevante, notificaremos a ANPD e os titulares afetados conforme determina a legislação.</p>
+
+        <h4>9. Cookies</h4>
+        <p>Utilizamos cookies estritamente necessários para o funcionamento da plataforma e cookies analíticos anonimizados para melhoria da experiência. Não utilizamos cookies para rastreamento publicitário de terceiros.</p>
+
+        <h4>10. Contato — Encarregado de Dados (DPO)</h4>
+        <p>
+          E-mail: <a href="mailto:privacidade@feito.com.br">privacidade@feito.com.br</a><br>
+          Resposta: até 15 dias úteis
+        </p>
+      </div>
+    </section>
+
+    <!-- ── SUPORTE ── -->
+    <section class="inst-section" id="suporte">
+      <p class="section-eyebrow">Ajuda</p>
+      <h2 class="section-title">Suporte</h2>
+      <div class="section-divider"></div>
+
+      <p class="body-text" style="margin-bottom:24px">Estamos disponíveis para prestadores e clientes. Escolha o canal mais rápido para o seu caso.</p>
+
+      <div class="suporte-grid">
+        <a class="suporte-card wpp" href="https://wa.me/5531992084142?text=Olá!%20Preciso%20de%20suporte%20na%20plataforma%20FEITO✅." target="_blank">
+          <div class="s-icon">📱</div>
+          <div class="s-title">WhatsApp</div>
+          <div class="s-text">Canal mais rápido. Atendimento de segunda a sábado, das 8h às 20h.</div>
+        </a>
+        <a class="suporte-card email" href="mailto:contato@feito.com.br">
+          <div class="s-icon">✉️</div>
+          <div class="s-title">E-mail</div>
+          <div class="s-text">Para questões detalhadas. Resposta em até 48 horas úteis.</div>
+        </a>
+      </div>
+
+      <p class="body-text" style="margin-bottom:4px"><strong>Horário de atendimento:</strong> Segunda a sábado — 8h às 20h</p>
+      <p class="body-text">Chamados fora do horário são respondidos no próximo dia útil.</p>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="inst-section" id="faq">
+      <p class="section-eyebrow">Dúvidas frequentes</p>
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <div class="section-divider"></div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">O que é um lead inválido? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Lead inválido é todo contato de cliente que não recebeu resposta do prestador dentro de 72 horas corridas. Quando isso acontece, o lead não é descontado da cota mensal do prestador. A regra é pública, documentada e aplicada automaticamente pela plataforma.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Como funcionam os selos FEITO✅? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Os selos são conquistados por desempenho real — não se compram. <strong>bem-FEITO✅</strong>: 10 avaliações acima de 4.5. <strong>perFEITO✅</strong>: 30 serviços com nota 4.8 ou superior. <strong>Dito e FEITO✅</strong>: histórico consistente de resposta em menos de 2 horas. Cada selo tem critérios públicos e verificáveis.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Posso cancelar a assinatura a qualquer momento? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Sim. O cancelamento pode ser solicitado a qualquer momento pelo suporte. O acesso permanece ativo até o fim do período já pago. Não há reembolso proporcional por cancelamento antecipado dentro do ciclo vigente.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">O cliente paga algo para usar a plataforma? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Não. Para o cliente, a FEITO✅ é gratuita. O modelo de receita é baseado na assinatura do prestador — o que garante que o prestador nunca precise pagar por lead individual ou repassar custos ao cliente.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Como sei que o prestador é confiável? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Todo prestador tem histórico público de avaliações reais de clientes anteriores, sistema de selos por mérito comprovado, e tempo médio de resposta registrado. O selo ⚡ FUNDADOR identifica os profissionais que acreditaram na plataforma desde o início.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Em quais cidades a FEITO✅ opera? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Operamos inicialmente em Belo Horizonte e região metropolitana — incluindo Contagem, Ibirité, Sarzedo e municípios adjacentes. A expansão para outras regiões de Minas Gerais e demais estados está planejada para 2027.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Como solicito exclusão dos meus dados? <span class="faq-arrow">▶</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Envie um e-mail para <a href="mailto:privacidade@feito.com.br" style="color:var(--gold)">privacidade@feito.com.br</a> com o assunto "Exclusão de dados" e seu nome completo ou e-mail de cadastro. Respondemos em até 15 dias úteis conforme determina a LGPD.</div></div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<div class="inst-footer">
+  <div class="footer-brand">FEITO<span>✅</span></div>
+  <div class="footer-slogan">Serviço bem-FEITO, cliente satisFEITO.</div>
+  <div class="footer-links">
+    <a href="#quem-somos">Quem somos</a>
+    <a href="#missao">Missão</a>
+    <a href="#valores">Valores</a>
+    <a href="#termos">Termos de Uso</a>
+    <a href="#privacidade">Política de Privacidade</a>
+    <a href="#suporte">Suporte</a>
+  </div>
+  <div class="footer-copy">© 2026 DanDaRa Tecnologia · FEITO✅ · Todos os direitos reservados</div>
+</div>
+
+<script>
+// ── FAQ accordion ─────────────────────────────────────
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+// ── Sidebar active state ──────────────────────────────
+const sections = document.querySelectorAll('.inst-section');
+const links    = document.querySelectorAll('.sidebar-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

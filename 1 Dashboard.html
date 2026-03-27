@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FEITO✅ — Meu Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1A1A2E;--navyM:#232341;--navyL:#2D2D50;--gold:#C9A84C;--goldL:#E8C76A;--green:#1A8C4E;--red:#C9370A;--grey:#9999BB;--offW:#F0EEE8;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--offW);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;padding-bottom:80px;}
+
+  nav{background:rgba(26,26,46,.97);border-bottom:1px solid rgba(201,168,76,.2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;color:#fff;text-decoration:none;}
+  .nav-brand span{color:var(--gold);}
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .nav-notif{position:relative;cursor:pointer;}
+  .notif-dot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;background:var(--red);}
+  .nav-avatar{width:32px;height:32px;border-radius:50%;background:var(--navyL);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;}
+
+  .main{max-width:800px;margin:0 auto;padding:24px 16px;}
+
+  /* Boas-vindas */
+  .welcome{margin-bottom:24px;}
+  .welcome h2{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#fff;margin-bottom:2px;}
+  .welcome p{font-size:.88rem;color:var(--grey);}
+
+  /* Alerta plano */
+  .alerta{background:rgba(201,55,10,.12);border:1px solid rgba(201,55,10,.3);border-left:4px solid var(--red);border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:center;margin-bottom:20px;cursor:pointer;}
+  .alerta-icon{font-size:1.2rem;flex-shrink:0;}
+  .alerta-text{font-size:.85rem;line-height:1.5;}
+  .alerta-text strong{color:#FF8060;}
+  .alerta-text a{color:var(--gold);text-decoration:none;}
+
+  /* Stats cards */
+  .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+  .stat-card{background:var(--navyL);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:18px 16px;}
+  .stat-card.gold-border{border-color:rgba(201,168,76,.3);}
+  .stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;color:var(--gold);margin-bottom:2px;}
+  .stat-n.green{color:#4ACA7F;}
+  .stat-n.red{color:#FF8060;}
+  .stat-l{font-size:.75rem;color:var(--grey);}
+  .stat-sub{font-size:.72rem;color:rgba(153,153,187,.6);margin-top:4px;}
+
+  /* Selos */
+  .selos-section{margin-bottom:24px;}
+  .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .section-title{font-size:.72rem;font-weight:700;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
+  .section-link{font-size:.8rem;color:var(--grey);text-decoration:none;}
+  .section-link:hover{color:var(--gold);}
+
+  .selos-grid{display:flex;flex-wrap:wrap;gap:8px;}
+  .selo-item{display:flex;align-items:center;gap:8px;background:var(--navyL);border-radius:8px;padding:10px 14px;}
+  .selo-item.conquistado{border:1px solid rgba(201,168,76,.3);}
+  .selo-item.pendente{border:1px dashed rgba(255,255,255,.08);opacity:.5;}
+  .selo-label{font-size:.8rem;color:var(--offW);font-weight:500;}
+  .selo-status{font-size:.7rem;color:var(--grey);}
+  .selo-icon{font-size:1rem;}
+
+  /* Progresso */
+  .prog-bar-wrap{margin-top:6px;}
+  .prog-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+  .prog-bar-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .6s;}
+  .prog-label{font-size:.68rem;color:var(--grey);margin-top:3px;}
+
+  /* Leads */
+  .leads-section{margin-bottom:24px;}
+  .leads-tabs{display:flex;gap:4px;margin-bottom:14px;background:var(--navyL);border-radius:8px;padding:4px;}
+  .leads-tab{flex:1;text-align:center;padding:8px;border-radius:6px;font-size:.8rem;cursor:pointer;color:var(--grey);transition:all .2s;border:none;background:transparent;font-family:'DM Sans',sans-serif;}
+  .leads-tab.active{background:var(--gold);color:var(--navy);font-weight:700;}
+
+  .lead-item{background:var(--navyL);border-radius:8px;padding:14px 16px;margin-bottom:10px;border-left:3px solid transparent;transition:all .2s;}
+  .lead-item.pendente{border-left-color:var(--gold);}
+  .lead-item.aceito{border-left-color:var(--green);}
+  .lead-item.invalido{border-left-color:var(--grey);opacity:.6;}
+  .lead-item.concluido{border-left-color:#4ACA7F;}
+
+  .lead-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+  .lead-cliente{font-weight:600;font-size:.9rem;color:#fff;}
+  .lead-badge{font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:20px;}
+  .badge-pendente{background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);}
+  .badge-aceito{background:rgba(26,140,78,.15);border:1px solid var(--green);color:#4ACA7F;}
+  .badge-invalido{background:rgba(100,100,120,.15);border:1px solid var(--grey);color:var(--grey);}
+  .badge-concluido{background:rgba(74,202,127,.15);border:1px solid #4ACA7F;color:#4ACA7F;}
+
+  .lead-desc{font-size:.82rem;color:var(--grey);margin-bottom:6px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .lead-meta{display:flex;gap:12px;font-size:.75rem;color:rgba(153,153,187,.7);}
+  .lead-actions{display:flex;gap:8px;margin-top:10px;}
+  .btn-aceitar{background:var(--gold);color:var(--navy);border:none;border-radius:4px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+  .btn-aceitar:hover{background:var(--goldL);}
+  .btn-recusar{background:transparent;color:var(--grey);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:7px 14px;font-size:.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+  .btn-recusar:hover{border-color:var(--red);color:#FF8060;}
+  .btn-wpp{background:#25D366;color:#fff;border:none;border-radius:4px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+
+  .invalido-nota{background:rgba(100,100,120,.1);border-radius:6px;padding:8px 12px;font-size:.75rem;color:var(--grey);margin-top:8px;}
+  .invalido-nota strong{color:#4ACA7F;}
+
+  .empty-leads{text-align:center;padding:40px 20px;color:var(--grey);font-size:.88rem;}
+  .empty-leads .empty-icon{font-size:2.5rem;margin-bottom:12px;}
+
+  /* Assinatura */
+  .assinatura-card{background:var(--navyL);border:1px solid rgba(201,168,76,.25);border-radius:10px;padding:20px;margin-bottom:24px;}
+  .assin-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+  .assin-plano{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);}
+  .assin-status{font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+  .status-ativa{background:rgba(26,140,78,.15);border:1px solid var(--green);color:#4ACA7F;}
+  .status-trial{background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);}
+  .assin-info{font-size:.82rem;color:var(--grey);line-height:1.8;}
+  .assin-info strong{color:var(--offW);}
+  .btn-gerenciar{display:inline-block;margin-top:12px;background:transparent;border:1px solid rgba(201,168,76,.35);color:var(--gold);font-size:.82rem;font-weight:700;padding:8px 18px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+  .btn-gerenciar:hover{border-color:var(--gold);background:rgba(201,168,76,.08);}
+
+  /* Bottom nav */
+  .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--navyM);border-top:1px solid rgba(201,168,76,.15);display:flex;z-index:100;}
+  .bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;cursor:pointer;color:var(--grey);font-size:.65rem;gap:4px;text-decoration:none;transition:color .2s;}
+  .bnav-item.active{color:var(--gold);}
+  .bnav-item:hover{color:var(--gold);}
+  .bnav-icon{font-size:1.3rem;}
+
+  @media(max-width:480px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://carlosaugusto5292-cloud.github.io/feito-landing/">FEITO<span>✅</span></a>
+  <div class="nav-right">
+    <div class="nav-notif">
+      🔔
+      <div class="notif-dot"></div>
+    </div>
+    <div class="nav-avatar">🔧</div>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- Boas-vindas -->
+  <div class="welcome">
+    <h2>Olá, Carlos! 👋</h2>
+    <p>Você está no plano <strong style="color:var(--gold)">Profissional · Fundador</strong> · Trial ativo — 5 dias restantes</p>
+  </div>
+
+  <!-- Alerta trial -->
+  <div class="alerta" onclick="window.location='feito-assinatura.html'">
+    <div class="alerta-icon">⚡</div>
+    <div class="alerta-text">
+      <strong>Trial encerra em 5 dias.</strong> Ative sua assinatura por <strong>R$19,90</strong> (preço Fundador) para não perder acesso. <a href="feito-assinatura.html">Ativar agora →</a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card gold-border">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Leads recebidos</div>
+      <div class="stat-sub">este mês</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n green">1</div>
+      <div class="stat-l">Leads inválidos</div>
+      <div class="stat-sub">não descontaram ✅</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Serviços realizados</div>
+      <div class="stat-sub">total na plataforma</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">—</div>
+      <div class="stat-l">Nota média</div>
+      <div class="stat-sub">aguardando avaliações</div>
+    </div>
+  </div>
+
+  <!-- Selos -->
+  <div class="selos-section">
+    <div class="section-header">
+      <span class="section-title">Meus selos</span>
+    </div>
+    <div class="selos-grid">
+      <div class="selo-item conquistado">
+        <span class="selo-icon">⚡</span>
+        <div>
+          <div class="selo-label">FUNDADOR</div>
+          <div class="selo-status">Conquistado ✅</div>
+        </div>
+      </div>
+      <div class="selo-item pendente">
+        <span class="selo-icon">✅</span>
+        <div>
+          <div class="selo-label">bem-FEITO✅</div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar"><div class="prog-bar-fill" style="width:0%"></div></div>
+            <div class="prog-label">0/10 avaliações acima de 4.5</div>
+          </div>
+        </div>
+      </div>
+      <div class="selo-item pendente">
+        <span class="selo-icon">⭐</span>
+        <div>
+          <div class="selo-label">perFEITO✅</div>
+          <div class="prog-bar-wrap">
+            <div class="prog-bar"><div class="prog-bar-fill" style="width:0%"></div></div>
+            <div class="prog-label">0/30 serviços com 4.8+</div>
+          </div>
+        </div>
+      </div>
+      <div class="selo-item pendente">
+        <span class="selo-icon">⏱️</span>
+        <div>
+          <div class="selo-label">Dito e FEITO✅</div>
+          <div class="selo-status">Responder leads em menos de 2h</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leads -->
+  <div class="leads-section">
+    <div class="section-header">
+      <span class="section-title">Meus leads</span>
+    </div>
+    <div class="leads-tabs">
+      <button class="leads-tab active" onclick="filtrarLeads('todos',this)">Todos (3)</button>
+      <button class="leads-tab" onclick="filtrarLeads('pendente',this)">Pendentes (1)</button>
+      <button class="leads-tab" onclick="filtrarLeads('aceito',this)">Aceitos (1)</button>
+      <button class="leads-tab" onclick="filtrarLeads('invalido',this)">Inválidos (1)</button>
+    </div>
+    <div id="leads-list"></div>
+  </div>
+
+  <!-- Assinatura -->
+  <div class="assinatura-card">
+    <div class="assin-top">
+      <div class="assin-plano">Plano Profissional · Fundador</div>
+      <span class="assin-status status-trial">TRIAL ATIVO</span>
+    </div>
+    <div class="assin-info">
+      Período de teste: <strong>5 dias restantes</strong><br>
+      Próxima cobrança: <strong>R$19,90</strong> (preço Fundador)<br>
+      Após o 1º mês: <strong>R$79,90/mês</strong><br>
+      Leads inválidos protegidos: <strong>1 lead protegido este mês</strong>
+    </div>
+    <button class="btn-gerenciar" onclick="alert('Integração com Asaas em breve.')">Ativar assinatura →</button>
+  </div>
+
+</div>
+
+<!-- Bottom Nav -->
+<div class="bottom-nav">
+  <a class="bnav-item active" href="#">
+    <span class="bnav-icon">🏠</span>
+    <span>Início</span>
+  </a>
+  <a class="bnav-item" href="feito-perfil.html?id=1">
+    <span class="bnav-icon">👤</span>
+    <span>Meu Perfil</span>
+  </a>
+  <a class="bnav-item" href="#">
+    <span class="bnav-icon">📋</span>
+    <span>Leads</span>
+  </a>
+  <a class="bnav-item" href="#">
+    <span class="bnav-icon">⭐</span>
+    <span>Avaliações</span>
+  </a>
+  <a class="bnav-item" href="#">
+    <span class="bnav-icon">⚙️</span>
+    <span>Conta</span>
+  </a>
+</div>
+
+<script>
+const LEADS = [
+  {
+    id: 1, status: 'pendente',
+    cliente: 'João Marcos', tel: '31988887777',
+    cidade: 'Contagem, MG',
+    desc: 'Preciso instalar 3 tomadas novas no quarto e uma no banheiro. A fiação está exposta e precisa ser verificada.',
+    urgencia: '🟡 Normal (essa semana)',
+    data: 'Hoje, 09:14',
+  },
+  {
+    id: 2, status: 'aceito',
+    cliente: 'Fernanda Lima', tel: '31977776666',
+    cidade: 'Ibirité, MG',
+    desc: 'Montagem de guarda-roupa 6 portas + cama box casal. Comprei na loja e não veio montagem inclusa.',
+    urgencia: '🔴 Urgente (hoje/amanhã)',
+    data: 'Ontem, 16:42',
+  },
+  {
+    id: 3, status: 'invalido',
+    cliente: 'Paulo Souza', tel: '31966665555',
+    cidade: 'Belo Horizonte, MG',
+    desc: 'Conserto de torneira no banheiro e verificar vazamento embaixo da pia.',
+    urgencia: '🟢 Flexível (sem pressa)',
+    data: '3 dias atrás',
+  }
+];
+
+let filtroAtual = 'todos';
+
+function filtrarLeads(filtro, btn) {
+  filtroAtual = filtro;
+  document.querySelectorAll('.leads-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderLeads();
+}
+
+function renderLeads() {
+  const lista = filtroAtual === 'todos' ? LEADS : LEADS.filter(l => l.status === filtroAtual);
+  const el = document.getElementById('leads-list');
+
+  if (lista.length === 0) {
+    el.innerHTML = `<div class="empty-leads"><div class="empty-icon">📭</div>Nenhum lead nessa categoria ainda.</div>`;
+    return;
+  }
+
+  const badges = { pendente: 'badge-pendente', aceito: 'badge-aceito', invalido: 'badge-invalido', concluido: 'badge-concluido' };
+  const labels = { pendente: 'PENDENTE', aceito: 'ACEITO', invalido: 'INVÁLIDO', concluido: 'CONCLUÍDO' };
+
+  el.innerHTML = lista.map(l => `
+    <div class="lead-item ${l.status}">
+      <div class="lead-top">
+        <span class="lead-cliente">${l.cliente}</span>
+        <span class="lead-badge ${badges[l.status]}">${labels[l.status]}</span>
+      </div>
+      <div class="lead-desc">${l.desc}</div>
+      <div class="lead-meta">
+        <span>📍 ${l.cidade}</span>
+        <span>${l.urgencia}</span>
+        <span>🕐 ${l.data}</span>
+      </div>
+      ${l.status === 'invalido' ? `
+        <div class="invalido-nota">
+          <strong>✅ Lead protegido</strong> — Não respondido em 72h. Este lead <strong>não foi descontado</strong> da sua cota mensal.
+        </div>
+      ` : ''}
+      ${l.status === 'pendente' ? `
+        <div class="lead-actions">
+          <a class="btn-wpp" href="https://wa.me/55${l.tel}?text=Olá%20${encodeURIComponent(l.cliente)}!%20Vi%20seu%20pedido%20na%20FEITO✅%20e%20estou%20entrando%20em%20contato." target="_blank">📱 Responder</a>
+          <button class="btn-recusar" onclick="this.closest('.lead-item').style.opacity='.4'">Recusar</button>
+        </div>
+      ` : ''}
+      ${l.status === 'aceito' ? `
+        <div class="lead-actions">
+          <a class="btn-wpp" href="https://wa.me/55${l.tel}" target="_blank">📱 WhatsApp</a>
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
+}
+
+renderLeads();
+</script>
+</body>
+</html>
